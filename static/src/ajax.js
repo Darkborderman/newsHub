@@ -1,16 +1,20 @@
 const $ = require('jquery');
+const console = require('console');
+const render = require('./render');
 
-$.ajax({
-  url: '/get',
-  type: 'GET',
-  data: {
-    user_name: $('#user_name').val(),
-  },
-  error() {
-    console.log('error');
-  },
-  success(response) {
-    $('#msg_user_name').html(response);
-    $('#msg_user_name').fadeIn();
-  },
+document.getElementById('get').addEventListener('click', () => {
+  $.ajax({
+    url: '/get',
+    type: 'GET',
+    data: {
+      url: $('#feed').val(),
+    },
+    error(res) {
+      console.log(res);
+    },
+    success(res) {
+      const feeds = JSON.parse(res);
+      console.log(feeds);
+    },
+  });
 });

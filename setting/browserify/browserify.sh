@@ -1,0 +1,1 @@
+./node_modules/.bin/browserify ./static/src/*.js > ./static/dist/ajax.js
