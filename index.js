@@ -1,8 +1,11 @@
 const express = require('express');
 const Parser = require('rss-parser');
+const console = require('console');
 
 const parser = new Parser();
 const app = express();
+
+app.use(express.static('static/dist'));
 
 (async () => {
   const feed = await parser.parseURL('https://www.bnext.com.tw/rss');
@@ -10,14 +13,21 @@ const app = express();
   console.log(feed.description);
   console.log(feed.link);
   feed.items.forEach((element) => {
-    // console.log(element);
     console.log(element.title);
     console.log(element.contentSnippet);
   });
 })();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get('/', async (req, res) => {
+  res.sendFile('index.html');
+});
+
+app.get('/get', async (req, res) => {
+  res.sendFile('index.html');
+});
+
+app.get('/save', async (req, res) => {
+  res.sendFile('index.html');
 });
 
 app.listen(3000, () => {

@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browserify": "^16.2.3",
     "express": "^4.16.4",
+    "jquery": "^3.4.1",
     "request": "^2.88.0",
     "rss-parser": "^3.7.0"
   },
